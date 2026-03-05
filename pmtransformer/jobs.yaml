@@ -1,0 +1,122 @@
+dataset:
+  root_cifs : "/Users/sxm13/Desktop/project/NCR-LLM/mofclassifier2/dataset/cifs"
+  root_dataset : "./data/"
+  downstream : "MOFClassifier2"
+  prop : "/Users/sxm13/Desktop/project/NCR-LLM/mofclassifier2/dataset/results/manual_Tom.json"
+  split:
+    train_fraction : 0.6
+    test_fraction : 0.2
+
+preprocess:
+  num_workers : 0
+  niggli : True
+  primitive : True
+  graph_method : 'crystalnn'
+
+train:
+  server:
+    batch_size : 16
+    num_workers : 0
+    per_gpu_batchsize : 16
+    accelerator : 'auto'
+    num_nodes : 1
+    devices : "auto"
+    precision : 16
+  path:
+    log_dir : "./results_115"
+    load_path : null
+  task:
+    loss_names : "classification"
+    n_classes : 2
+    test_only : False
+    visualize : False
+  model:
+    max_epochs : 200
+    mean : null
+    std : null
+    seed : 115
+    optim_type : "adamw"
+    learning_rate : 0.0001
+    weight_decay : 0.01
+    decay_power : 1
+    max_steps : -1
+    warmup_steps : 0.05
+    end_lr : 0
+    lr_mult : 1
+    layer:
+      hid_dim : 768
+      num_heads : 12
+      num_layers : 12
+      mlp_ratio : 4
+      drop_rate : 0.1
+      mpp_ratio : 0.15
+      atom_fea_len : 64
+      nbr_fea_len : 64
+      max_graph_len : 300
+      max_nbr_atoms : 12
+      img_size : 30
+      patch_size : 5
+      in_chans : 1
+      max_grid_len : -1
+      draw_false_grid : False
+  # other_para:
+  #   resume_from : None
+  #   val_check_interval : 1.0
+  #   dataset_size : False 
+
+predict:
+  server:
+    batch_size : 16
+    num_workers : 0
+    per_gpu_batchsize : 16
+    accelerator : 'auto'
+    num_nodes : 1
+    devices : 1
+  path:
+    load_path : "./results_115/" ### need change in .py file
+  task:
+    test_only : True
+    visualize : False
+  model:
+    seed : 115
+    version : 0
+    split : "all"
+
+visualize:
+  path_cif : "./data/total/"
+  downstream : "mofclassifier2"
+  cifname : "Cu-BTC"
+  data_path : "./data/total/"
+  version : 0
+  seed : 115
+  save_path : "./visualize"
+  graph:
+    cmap : 'cool'
+    view_init_all : (0, -15)
+    alpha : 0.5
+    minatt : 0
+    maxatt : 0.1
+    grid_scale_factor : [0.8, 0.5, 0.5]
+    atomic_scale_factor : [0.5, 1, 1.2]
+    att_scale_factor : [3, 3, 3]
+    show_colorbar : True
+    remove_under_minatt : True
+    return_fig : True
+    dpi : 600
+    bbox_inches : 'tight'
+    pad_inches : 0.0
+  grid:
+    cmap : 'winter'
+    view_init_all : (15, 30)
+    alpha : 0.5
+    minatt : 0
+    maxatt : 0.01
+    grid_scale_factor : [0.8, 0.5, 0.5]
+    atomic_scale_factor : [0.5, 1, 1.2]
+    att_scale_factor : [3, 3, 3]
+    show_colorbar : True
+    remove_under_minatt : True
+    return_fig : True
+    dpi : 600
+    bbox_inches : 'tight'
+    pad_inches : 0.0
