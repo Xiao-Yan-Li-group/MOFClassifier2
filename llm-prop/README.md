@@ -1,6 +1,4 @@
-# [LLM-Prop: Predicting Physical And Electronic Properties Of Crystalline Solids From Their Text Descriptions](https://doi.org/10.48550/arXiv.2310.14029)
-
-## The 
+## [Source](https://doi.org/10.48550/arXiv.2310.14029)
 
 ## Installation
 You can install LLM-Prop by following these steps:
