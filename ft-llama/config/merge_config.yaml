@@ -1,0 +1,11 @@
+### model
+model_name_or_path: deepseek-ai/deepseek-coder-7b-instruct-v1.5 # google/gemma-3-4b-it Qwen/Qwen3-4B-Instruct-2507 meta-llama/Meta-Llama-3-8B-Instruct
+adapter_name_or_path: ckpt/deepseek-7b/lora/sft_mofclass2_full # gemma3-4b qwen3-4b/ llama3-8b/
+template: llama3
+finetuning_type: lora
+
+### export
+export_dir: models/deepseek_lora_sft_mofclass2_full
+export_size: 2
+export_device: cpu
+export_legacy_format: false

@@ -1,0 +1,378 @@
+model_name_or_path: google/gemma-3-4b-it
+cache_dir: /scratch/guobinzhao/hf_cache
+trust_remote_code: true
+rope_scaling: null
+model_revision: main
+
+dataset: cif_p1,composition,slices,local_env,atom_sequences_plusplus,crystal_text_llm,zmatrix,robocry,mof2text,struc2str
+eval_dataset: null
+dataset_dir: data
+# media_dir: null
+template: gemma3
+val_size: 0.2
+max_samples: null
+# overwrite_cache: false
+preprocessing_num_workers: 16
+preprocessing_batch_size: 1000
+# train_on_prompt: false
+# mask_history: false
+# streaming: false
+# buffer_size: 16384
+# mix_strategy: concat
+# interleave_probs: null
+# eval_num_beams: null
+# eval_on_each_dataset: true
+# packing: null
+# neat_packing: false
+# tool_format: null
+# default_system: null
+# enable_thinking: false
+tokenized_path: ckpt/gemma3-4b/lora/token_mofclass2_full
+# data_shared_file_system: false
+# ignore_pad_token_for_loss: true
+
+use_fast_tokenizer: true
+# resize_vocab: false
+# split_special_tokens: false
+# add_tokens: null
+# add_special_tokens: null
+# new_special_tokens_config: null
+# init_special_tokens: noise_init
+cutoff_len: 4096
+# print_param_status: true
+
+stage: sft
+finetuning_type: lora
+# lora_alpha: null
+# lora_dropout: 0.05
+# lora_rank: 8
+# lora_target: all
+# use_rslora: false
+# use_dora: false
+# pissa_init: false
+# pissa_iter: 16
+# pissa_convert: false
+
+per_device_train_batch_size: 8
+per_device_eval_batch_size: 8
+gradient_accumulation_steps: 8
+learning_rate: 1.0e-4
+num_train_epochs: 2
+lr_scheduler_type: cosine
+# warmup_ratio: 0.05
+# weight_decay: 0.0
+# adam_beta1: 0.9
+# adam_beta2: 0.999
+# adam_epsilon: 1.0e-08
+# max_grad_norm: 1.0
+# max_steps: -1
+# lr_scheduler_kwargs: {}
+# warmup_steps: 0
+
+# torch_empty_cache_steps: null
+# auto_find_batch_size: true
+# full_determinism: false
+# gradient_checkpointing: true
+# gradient_checkpointing_kwargs: null
+# sortish_sampler: true
+# batch_eval_metrics: true
+# eval_on_start: true
+# neftune_noise_alpha: null
+
+do_train: true
+do_eval: true
+do_predict: false
+eval_strategy: steps
+eval_steps: 100
+prediction_loss_only: false
+
+flash_attn: auto
+# shift_attn: false
+# use_unsloth: false
+# use_unsloth_gc: false
+# mixture_of_depths: null
+# enable_liger_kernel: true
+low_cpu_mem_usage: true
+# moe_aux_loss_coef: null
+
+# per_gpu_train_batch_size: null
+# per_gpu_eval_batch_size: null
+
+# no_cuda: false
+# use_cpu: false
+# use_mps_device: false
+seed: 120
+data_seed: 120
+# jit_mode_eval: false
+bf16: true
+# fp16: false
+# fp16_opt_level: O1
+# half_precision_backend: auto
+# bf16_full_eval: false
+# fp16_full_eval: false
+# tf32: null
+
+include_tokens_per_second: false
+include_effective_tokens_per_second: false
+include_num_input_tokens_seen: non_padding
+
+do_sample: true
+temperature: 0.2
+top_p: 0.9
+top_k: 50
+num_beams: 1
+max_length: 4096
+max_new_tokens: 16
+repetition_penalty: 1.05
+length_penalty: 1.0
+skip_special_tokens: true
+
+infer_backend: huggingface
+infer_dtype: auto
+offload_folder: offload
+use_kv_cache: true
+use_v1_kernels: false
+
+quantization_method: QuantizationMethod.BNB
+quantization_bit: 4
+quantization_type: nf4
+double_quantization: true
+quantization_device_map: null
+
+export_dir: models/gemma3_lora_sft_mofclass2_full
+export_size: 4
+export_device: auto
+export_quantization_bit: null
+export_quantization_dataset: null
+export_quantization_nsamples: 128
+export_quantization_maxlen: 4096
+export_legacy_format: false
+export_hub_model_id: null
+
+# hub_model_id: null
+# hub_strategy: every_save
+# hub_token: null
+# hub_private_repo: null
+# hub_always_push: false
+# hub_revision: null
+# push_to_hub: false
+# push_to_hub_model_id: null
+# push_to_hub_organization: null
+# push_to_hub_token: null
+# hf_hub_token: null
+# ms_hub_token: null
+# om_hub_token: null
+
+output_dir: ckpt/gemma3-4b/lora/sft_mofclass2_full
+save_steps: 100
+plot_loss: true
+overwrite_output_dir: false
+save_only_model: false
+report_to: wandb
+
+log_level: warning
+log_level_replica: warning
+log_on_each_node: true
+logging_strategy: steps
+logging_first_step: true
+logging_steps: 50
+logging_nan_inf_filter: true
+
+save_strategy: best
+save_total_limit: null
+save_safetensors: true
+save_on_each_node: false
+restore_callback_states_from_checkpoint: false
+
+load_best_model_at_end: true
+metric_for_best_model: eval_loss
+greater_is_better: false
+# eval_delay: 0
+# eval_accumulation_steps: 16
+
+# local_rank: -1
+# ddp_backend: null
+# ddp_timeout: 50000
+# tpu_num_cores: null
+# tpu_metrics_debug: false
+# debug: null
+# dataloader_num_workers: 0
+# dataloader_prefetch_factor: null
+# past_index: -1
+# deepspeed: null
+
+# disable_gradient_checkpointing: false
+# use_reentrant_gc: true
+# upcast_layernorm: false
+# upcast_lmhead_output: false
+# train_from_scratch: false
+
+logging_dir: null
+run_name: lora_mofclass2_full_gemma
+disable_tqdm: null
+
+# dataloader_drop_last: false
+# remove_unused_columns: true
+# label_names: null
+# include_inputs_for_metrics: false
+# include_for_metrics: []
+# eval_do_concat_batches: true
+# eval_use_gather_object: false
+# average_tokens_across_devices: true
+# compute_accuracy: true
+# disable_shuffling: false
+# early_stopping_steps: 500
+# dataloader_pin_memory: true
+# dataloader_persistent_workers: false
+# skip_memory_metrics: true
+# use_legacy_prediction_loop: false
+# ignore_data_skip: false
+
+predict_with_generate: false
+generation_max_length: 16
+generation_num_beams: null
+generation_config: null
+
+# fsdp: null
+# fsdp_min_num_params: 0
+# fsdp_config: null
+# fsdp_transformer_layer_cls_to_wrap: null
+# accelerator_config: null
+# parallelism_config: null
+
+# label_smoothing_factor: 0.0
+# optim: adamw_torch_fused
+# optim_args: null
+# adafactor: false
+# group_by_length: false
+# length_column_name: length
+
+project: huggingface
+trackio_space_id: trackio
+
+# ddp_find_unused_parameters: null
+# ddp_bucket_cap_mb: null
+# ddp_broadcast_buffers: null
+
+# torch_compile: false
+# torch_compile_backend: null
+# torch_compile_mode: null
+
+# fp8: false
+# fp8_backend: auto
+# fp8_enable_fsdp_float8_all_gather: false
+
+# freeze_trainable_layers: 2
+# freeze_trainable_modules: all
+# freeze_extra_modules: null
+# additional_target: null
+# module_dropout: 0.0
+# oft_rank: 0
+# oft_block_size: 32
+# oft_target: all
+# create_new_adapter: false
+# loraplus_lr_ratio: null
+# loraplus_lr_embedding: 1.0e-06
+
+# pref_beta: 0.1
+# pref_ftx: 0.0
+# pref_bco_weight: 0.0
+# pref_loss: sigmoid
+# dpo_label_smoothing: 0.0
+# kto_chosen_weight: 1.0
+# kto_rejected_weight: 1.0
+# simpo_gamma: 0.5
+# ppo_buffer_size: 1
+# ppo_epochs: 4
+# ppo_score_norm: false
+# ppo_target: 6.0
+# ppo_whiten_rewards: false
+# ref_model: null
+# ref_model_adapters: null
+# ref_model_quantization_bit: null
+# reward_model: null
+# reward_model_adapters: null
+# reward_model_quantization_bit: null
+# reward_model_type: lora
+# ld_alpha: null
+
+# use_galore: false
+# galore_target: all
+# galore_rank: 16
+# galore_update_interval: 200
+# galore_scale: 2.0
+# galore_proj_type: std
+# galore_layerwise: false
+
+# use_apollo: false
+# apollo_target: all
+# apollo_rank: 16
+# apollo_update_interval: 200
+# apollo_scale: 32.0
+# apollo_proj: random
+# apollo_proj_type: std
+# apollo_scale_type: channel
+# apollo_layerwise: false
+# apollo_scale_front: false
+
+# use_badam: false
+# badam_mode: layer
+# badam_start_block: null
+# badam_switch_mode: ascending
+# badam_switch_interval: 50
+# badam_update_ratio: 0.05
+# badam_mask_mode: adjacent
+# badam_verbose: 0
+
+# use_swanlab: false
+# swanlab_project: llamafactory
+# swanlab_workspace: null
+# swanlab_run_name: null
+# swanlab_mode: cloud
+# swanlab_api_key: null
+# swanlab_logdir: null
+# swanlab_lark_webhook_url: null
+# swanlab_lark_secret: null
+
+# ray_scope: last
+# ray_run_name: null
+# ray_storage_path: ./saves
+# ray_storage_filesystem: null
+# ray_num_workers: 1
+# resources_per_worker:
+#   GPU: 1
+# placement_strategy: PACK
+# ray_init_kwargs: null
+
+# use_kt: false
+# kt_optimize_rule: null
+# cpu_infer: 32
+# chunk_size: 8192
+# mode: normal
+# kt_maxlen: 4096
+# kt_use_cuda_graph: true
+# kt_mode: normal
+# kt_force_think: false
+
+# vllm_maxlen: 4096
+# vllm_gpu_util: 0.7
+# vllm_enforce_eager: false
+# vllm_max_lora_rank: 32
+# vllm_config: null
+# sglang_maxlen: 4096
+# sglang_mem_fraction: 0.7
+# sglang_tp_size: -1
+# sglang_config: null
+# sglang_lora_backend: triton
+
+# image_max_pixels: 589824
+# image_min_pixels: 1024
+# image_do_pan_and_scan: false
+# crop_to_patches: false
+# video_max_pixels: 65536
+# video_min_pixels: 256
+# video_fps: 2.0
+# video_maxlen: 128
+# use_audio_in_video: false
+# audio_sampling_rate: 16000
+

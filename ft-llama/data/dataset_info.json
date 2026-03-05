@@ -1,0 +1,80 @@
+{
+  "cif_p1": {
+    "file_name": "mofclass2_cif_p1_train.json"
+  },
+  "cif_p1_test": {
+    "file_name": "mofclass2_cif_p1_test.json"
+  },
+  "composition": {
+    "file_name": "mofclass2_composition_train.json"
+  },
+  "composition_test": {
+    "file_name": "mofclass2_composition_test.json"
+  },
+  "slices": {
+    "file_name": "mofclass2_slices_train.json"
+  },
+  "slices_test": {
+    "file_name": "mofclass2_slices_test.json"
+  },
+  "local_env": {
+    "file_name": "mofclass2_local_env_train.json"
+  },
+  "local_env_test": {
+    "file_name": "mofclass2_local_env_test.json"
+  },
+  "atom_sequences_plusplus": {
+    "file_name": "mofclass2_atom_sequences_plusplus_train.json"
+  },
+  "atom_sequences_plusplus_test": {
+    "file_name": "mofclass2_atom_sequences_plusplus_test.json"
+  },
+  "crystal_text_llm": {
+    "file_name": "mofclass2_crystal_text_llm_train.json"
+  },
+  "crystal_text_llm_test": {
+    "file_name": "mofclass2_crystal_text_llm_test.json"
+  },
+  "zmatrix": {
+    "file_name": "mofclass2_zmatrix_train.json"
+  },
+  "zmatrix_test": {
+    "file_name": "mofclass2_zmatrix_test.json"
+  },
+  "robocry": {
+    "file_name": "mofclass2_robocry_reason_train.json"
+  },
+  "robocry_test": {
+    "file_name": "mofclass2_robocry_reason_test.json"
+  },
+  "mof2text": {
+    "file_name": "mofclass2_mof2text_reason_train.json"
+  },
+  "mof2text_test": {
+    "file_name": "mofclass2_mof2text_reason_test.json"
+  },
+  "struc2str": {
+    "file_name": "mofclass2_struc2str_train.json"
+  },
+  "struc2str_test": {
+    "file_name": "mofclass2_struc2str_test.json"
+  },
+  "robocry_reason": {
+    "file_name": "mofclass2_robocry_reason_all.json"
+  },
+  "mof2text_reason": {
+    "file_name": "mofclass2_mof2text_reason_all.json"
+  },
+  "robocry_reason_train": {
+    "file_name": "mofclass2_robocry_reason_train.json"
+  },
+  "mof2text_reason_train": {
+    "file_name": "mofclass2_mof2text_reason_train.json"
+  },
+  "robocry_reason_test": {
+    "file_name": "mofclass2_robocry_reason_test.json"
+  },
+  "mof2text_reason_test": {
+    "file_name": "mofclass2_mof2text_reason_test.json"
+  }
+}

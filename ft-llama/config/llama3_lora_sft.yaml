@@ -1,0 +1,40 @@
+model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+trust_remote_code: true
+
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all
+
+dataset: cif_p1,composition,slices,local_env,atom_sequences_plusplus,crystal_text_llm,zmatrix,robocry,mof2text,
+struc2str
+template: llama3
+cutoff_len: 4096
+max_samples: 9999999
+overwrite_cache: true
+preprocessing_num_workers: 16
+resume_from_checkpoint: ckpt/llama3-8b/lora/sft_mofclass2/checkpoint-9900
+
+ignore_data_skip: false
+
+output_dir: ckpt/llama3-8b/lora/sft_mofclass2
+logging_steps: 10
+save_steps: 100
+plot_loss: true
+overwrite_output_dir: false
+save_only_model: false
+report_to: wandb
+
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+learning_rate: 1.0e-4
+num_train_epochs: 2
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+bf16: true
+ddp_timeout: 180000000
+
+val_size: 0.2
+per_device_eval_batch_size: 1
+eval_strategy: steps
+eval_steps: 100
