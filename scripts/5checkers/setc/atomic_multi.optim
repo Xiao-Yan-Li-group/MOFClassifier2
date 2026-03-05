@@ -1,0 +1,7 @@
+batch=4
+n_layers=8
+n_hiddenchannels=640
+dropout=0.2195637831070562
+attention_heads=8
+aggregate=add
+lr=1.8021735667498025e-05
